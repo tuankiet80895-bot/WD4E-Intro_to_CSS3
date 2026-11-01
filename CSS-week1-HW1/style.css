@@ -1,0 +1,60 @@
+/* =====================================================
+   style.css - MỘT file CSS dùng chung cho cả 3 trang
+   Mỗi quy tắc (rule) có dạng:
+   tên-thẻ { thuộc-tính: giá-trị; }
+   ===================================================== */
+
+/* Bước 3: Thẻ body - đổi font chữ và cỡ chữ cho cả trang */
+body {
+  font-family: Arial, Helvetica, sans-serif; /* font chữ (có font dự phòng) */
+  font-size: 16px;                           /* cỡ chữ chung */
+}
+
+/* Bước 4: Thẻ header - đổi màu nền */
+header {
+  background-color: #2c3e50; /* xanh đậm */
+}
+
+/* Bước 5: Thẻ nav (thanh menu) - đổi màu nền */
+nav {
+  background-color: #34495e; /* xanh xám */
+}
+
+/* Bước 6: Thẻ main (nội dung chính) - đổi màu nền và cỡ chữ */
+main {
+  background-color: #ecf0f1; /* xám rất nhạt */
+  font-size: 18px;           /* chữ trong main to hơn body một chút */
+}
+
+/* Bước 7: Thẻ footer (chân trang) - đổi màu nền */
+footer {
+  background-color: #bdc3c7; /* xám */
+}
+
+/* Bước 8: Thẻ li (mục trong danh sách) - đổi display và width
+   (đề bài yêu cầu giá trị cụ thể ở bước này) */
+li {
+  display: inline-block; /* các mục xếp ngang hàng nhau thay vì xuống dòng */
+  width: 150px;          /* mỗi mục rộng 150px */
+}
+
+/* Bước 9: Thẻ h1 (tiêu đề lớn) - căn lề, font chữ, màu chữ */
+h1 {
+  text-align: center;                /* căn giữa */
+  font-family: Georgia, serif;       /* font khác với body */
+  color: #ffffff;                    /* chữ trắng, nổi trên nền header đậm */
+}
+
+/* Bước 10: Thẻ p (đoạn văn) - đổi khoảng cách giữa các dòng */
+p {
+  line-height: 1.6; /* dòng thoáng hơn, dễ đọc hơn */
+}
+
+/* ----- Phần thêm (không bắt buộc) ----- */
+/* Chữ trong nav và footer nên đủ tương phản với màu nền (WAVE hay báo lỗi này) */
+nav a {
+  color: #ffffff;
+}
+
+/* Lưu ý: h1 màu trắng chỉ đẹp nếu h1 nằm trong header (nền đậm).
+   Nếu h1 nằm trong main (nền sáng), hãy đổi color thành #2c3e50. */
