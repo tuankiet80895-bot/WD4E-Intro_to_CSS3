@@ -1,0 +1,199 @@
+/* =====================================================
+   style.css - Dự án cuối khóa: My Travel Journal
+   MỘT file CSS dùng chung cho cả 3 trang
+   ===================================================== */
+
+/* ---------- Cài đặt chung ---------- */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;           /* dòng thoáng, dễ đọc */
+  color: #222222;             /* chữ gần như đen: tương phản cao trên nền sáng */
+  background-color: #f7f5f0;  /* nền kem nhạt */
+  margin: 0;                  /* bỏ khoảng trắng mặc định quanh trang */
+}
+
+/* ---------- Bước 3: Link "Skip to Main Content" ----------
+   Dùng thuộc tính position + :focus.
+   Bình thường: nằm ngoài màn hình (không nhìn thấy).
+   Khi bấm phím Tab (focus): hiện ra ở góc trên bên trái. */
+.skip-link {
+  position: absolute;     /* đặt vị trí tự do, không ảnh hưởng bố cục */
+  left: -9999px;          /* đẩy ra khỏi màn hình */
+  top: 0;
+}
+
+.skip-link:focus {
+  left: 16px;             /* kéo vào màn hình khi được focus */
+  top: 16px;
+  z-index: 100;           /* nằm đè lên mọi thứ khác */
+  background-color: #ffd166;
+  color: #1f2a44;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+/* ---------- Header ---------- */
+header {
+  background-color: #1f2a44;   /* xanh navy đậm */
+  padding: 16px 16px 24px;
+}
+
+h1 {
+  color: #ffffff;              /* chữ trắng trên nền navy */
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  margin: 24px 0 0;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  color: #1f2a44;
+}
+
+/* ---------- Bước 4 + 7: Thanh điều hướng (nav) dùng flex ----------
+   Ít nhất 3 thuộc tính CSS: display, justify-content, gap,
+   background-color, padding, border-radius... */
+nav ul {
+  display: flex;                 /* Bước 7: dùng flex cho thanh nav */
+  justify-content: center;       /* căn các mục ra giữa */
+  flex-wrap: wrap;               /* tự xuống dòng nếu màn hình hẹp */
+  gap: 12px;                     /* khoảng cách giữa các mục */
+  list-style: none;              /* bỏ dấu chấm đầu dòng */
+  margin: 0;
+  padding: 12px;
+  background-color: #2f3e63;     /* nền nav sáng hơn header một chút */
+  border-radius: 40px;           /* bo tròn thanh nav */
+}
+
+nav a {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;         /* bỏ gạch chân */
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Bước 8: hiệu ứng :hover cho link trong nav */
+nav a:hover {
+  background-color: #ffd166;     /* đổi sang màu vàng */
+  color: #1f2a44;                /* chữ đậm để vẫn dễ đọc */
+  transform: translateY(-3px);   /* nhấc lên một chút */
+}
+
+/* Trang hiện tại được tô nổi bật */
+nav a[aria-current="page"] {
+  background-color: #ffffff;
+  color: #1f2a44;
+}
+
+/* Khi dùng phím Tab, viền focus rõ ràng cho người dùng bàn phím */
+a:focus {
+  outline: 3px solid #ffd166;
+  outline-offset: 2px;
+}
+
+/* ---------- Nội dung chính ---------- */
+main {
+  max-width: 1000px;     /* không rộng quá 1000px */
+  margin: 0 auto;        /* căn giữa */
+  padding: 24px 16px;
+}
+
+main a {
+  color: #0b4f9c;        /* link xanh đậm, tương phản tốt trên nền sáng */
+}
+
+/* ---------- Bước 5: Box model cho TẤT CẢ ảnh ----------
+   border (viền) + padding (đệm) + border-radius (bo góc) */
+img {
+  box-sizing: border-box;      /* chiều rộng đã gồm cả viền và padding */
+  max-width: 100%;
+  height: auto;
+  border: 4px solid #1f2a44;   /* viền */
+  padding: 6px;                /* khoảng đệm giữa viền và ảnh */
+  border-radius: 12px;         /* bo góc */
+  background-color: #ffffff;   /* màu nền của phần padding */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Bước 8: hiệu ứng :hover cho ảnh - phóng to nhẹ và đổ bóng */
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.hero {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+
+/* ---------- Bước 6: Grid (trang Gallery) ----------
+   Hơn 2 cột: ở đây dùng 3 cột bằng nhau */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 cột, mỗi cột 1 phần bằng nhau */
+  gap: 24px;                              /* khoảng cách giữa các ô */
+}
+
+.grid figure {
+  margin: 0;
+  text-align: center;
+}
+
+.grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;      /* tất cả ảnh cùng tỉ lệ */
+  object-fit: cover;        /* cắt ảnh cho vừa khung, không bị méo */
+}
+
+.grid figcaption {
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ---------- Bước 7: Flex (trang Favorite Places) ---------- */
+.flex {
+  display: flex;
+  flex-wrap: wrap;                 /* xuống dòng khi hết chỗ */
+  justify-content: space-around;   /* chia đều khoảng trống */
+  gap: 24px;
+}
+
+.flex img {
+  width: 260px;
+  aspect-ratio: 1 / 1;      /* ảnh vuông */
+  object-fit: cover;
+}
+
+/* ---------- Bước 9: nth-child ----------
+   Ảnh thứ chẵn (2, 4, 6) bo tròn thành hình tròn,
+   ảnh lẻ giữ bo góc như cũ */
+.flex img:nth-child(even) {
+  border-radius: 50%;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #1f2a44;
+  color: #ffffff;           /* chữ trắng trên nền navy */
+  text-align: center;
+  padding: 16px;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ---------- Màn hình nhỏ (điện thoại) ---------- */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;   /* chỉ 1 cột trên điện thoại */
+  }
+}
